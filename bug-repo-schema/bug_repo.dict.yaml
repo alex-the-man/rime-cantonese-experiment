@@ -1,0 +1,58 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# Luna Pinyin - 明月拼音
+#
+#   Rime Developers <rime-devel@googlegroups.com>
+#
+# Thanks to the following works:
+#
+# * CC-CEDICT
+#   http://cc-cedict.org/
+#
+# * Android open source project
+#   http://android.git.kernel.org/?p=platform/packages/inputmethods/PinyinIME.git
+#
+# * Chewing - 新酷音
+#   http://chewing.csie.net/
+#
+# * 三拼簡繁詞庫 0.9
+#   http://www.pkucn.com/viewthread.php?tid=245448
+#
+# * opencc - 開放中文轉換
+#   http://code.google.com/p/opencc/
+#
+# * 萌典
+#   http://www.moedict.tw/
+#
+
+---
+name: bug_repo
+version: "2020.02.08"
+sort: by_weight
+use_preset_vocabulary: true
+...
+
+第	a1
+第	a2
+第	a3
+一	b1
+二	b2
+三	b3
+四	b3
+五	b2
+六	b1
+七	b1
+八	b2
+九	b3
+十	b1
+第十	a1 b1
+第一	a1 b1
+第六	a1 b1
+第二	a2 b2
+第五	a2 b2
+第三	a3 b3
+第四	a3 b3
+第七	a1 b1
+第八	a2 b2
+第九	a3 b3
