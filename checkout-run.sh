@@ -1,6 +1,6 @@
 #!/bin/bash
 
 cd /tmp
-git clone git@github.com:alex-the-man/rime-cantonese-experiment.git
+git clone https://github.com/alex-the-man/rime-cantonese-experiment
 cd rime-cantonese-experiment
 ./install-mac.sh
