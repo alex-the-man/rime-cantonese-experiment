@@ -2,6 +2,8 @@
 import os
 from collections import Counter
 
+import numpy as np
+
 top_entries = set()
 global_enable_top_entries = False
 
@@ -22,6 +24,24 @@ def load_ngram_csv(csv_path, weight, words, enable_top_entries=True):
             if global_enable_top_entries and enable_top_entries and i < 50000:
                 top_entries.add(word)
             i += 1
+
+def find_pctile(tsv_path, p):
+    counts = []
+    with open(tsv_path) as f:
+        lines = f.readlines()
+        for line in lines:
+            parts = line.split("\t")
+            word = parts[0]
+            if any(c.isascii() or c == '，' for c in word): continue
+            count = int(parts[1])
+            counts.append(count)
+    # return [np.percentile(counts, 50), np.percentile(counts, 90), np.percentile(counts, 99), np.percentile(counts, 100)]
+    # for i in range(0, 101):
+    #    print(str(np.percentile(counts, i)), end=',')
+    # print("\n")
+    return np.percentile(counts, p)
+
+org_max = find_pctile('org-essay.txt', 100)
 
 words = dict()
 # load_ngram_csv('lihkg_ngram_1_16_lite.csv', 1, words)
@@ -83,7 +103,13 @@ for file in files:
                 else:
                     output.write('# dropped ' + word + '\n')
 
+most_common = combined.most_common()
+new_max = most_common[0][1]
+
+# Scale the weight so it doesn't break rime learning.
+ratio = org_max / new_max
+
 with open('hacky-essay.txt', 'w') as output:
-    for (k, v) in combined.most_common():
+    for (k, v) in most_common:
         if v == 0 and len(k) == 1: continue
-        output.write(k + "\t" + str(v) + "\n")
+        output.write(k + "\t" + str(round(v * ratio)) + "\n")
