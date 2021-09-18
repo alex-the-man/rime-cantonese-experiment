@@ -1,0 +1,6 @@
+hant:
+  grammar:
+    language: zh-hant
+  translator/contextual_suggestions: true
+  translator/max_homophones: 30
+  translator/max_homographs: 30

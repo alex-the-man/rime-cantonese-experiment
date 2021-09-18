@@ -206,3 +206,7 @@ recognizer:
     loengfan: "^r[a-z']*;?$"
     stroke: "^x[hspnz]*;?$"
     cangjie5: "^v[a-z]*;?$"
+
+__patch:
+  # 使用八股文語言模型
+  - grammar:/hant?
